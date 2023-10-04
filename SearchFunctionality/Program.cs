@@ -8,6 +8,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IModuleMasterRepository, ModuleMasterRepository>();
 
 
+System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

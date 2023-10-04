@@ -1,42 +1,13 @@
 ﻿@using SearchFunctionality.Models
 
-@{
-    var moduleList = ViewBag.ModuleMasterList;
-}
-
-<div>
-    <div>Search: <input class="form-control" id="searchInput" type="text"></div>
-    <br>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Module Code</th>
-                <th>Application</th>
-                <th>Module</th>
-                <th>Sub Module</th>
-            </tr>
-        </thead>
-        <tbody id="moduleTable">
-            @foreach (ModuleMaster item in moduleList)
-            {
-                <tr>
-                    <td>@item.ModuleCode</td>
-                    <td>@item.Application</td>
-                    <td>@item.Module</td>
-                    <td>@item.SubModule</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-</div>
-
+<partial name="_ModuleList" model="@ViewBag.ModuleMasterList" />
 
 
 @section Scripts{
     <script>
         $(document).ready(function () {
             $("#searchInput").on("keyup", searchInputMethod);
+          
         });
 
 
@@ -50,4 +21,3 @@
         }
     </script>
 }
-

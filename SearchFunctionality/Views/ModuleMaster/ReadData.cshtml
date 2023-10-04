@@ -1,0 +1,35 @@
+﻿
+<form asp-action="ReadData" asp-controller="ModuleMaster" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="excelInput" class="form-label">Excel File Input</label>
+        <input class="form-control" type="file" id="excelInput" name="excelInput">
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+
+</form>
+
+<div class="border-1">
+    <partial name="_ModuleList" model="@ViewBag.UploadedModuleList" />
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", searchInputMethod);
+        });
+
+
+        function searchInputMethod() {
+
+            var value = $(this).val().toLowerCase();
+
+            $("#moduleTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        }
+    </script>
+}
